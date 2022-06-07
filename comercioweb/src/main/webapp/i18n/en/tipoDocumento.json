@@ -1,0 +1,11 @@
+{
+  "comerciowebApp": {
+    "TipoDocumento": {
+      "null": "",
+      "CC": "CC",
+      "NIT": "NIT",
+      "CE": "CE",
+      "PASAPORTE": "PASAPORTE"
+    }
+  }
+}

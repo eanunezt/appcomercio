@@ -1,0 +1,26 @@
+{
+  "applications": ["comercioweb", "ordenes"],
+  "changelogDate": "20220605152844",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "medio_pago",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "MedioPago",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

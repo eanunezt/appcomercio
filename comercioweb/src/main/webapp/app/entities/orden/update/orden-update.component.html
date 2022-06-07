@@ -1,0 +1,313 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-orden-heading" data-cy="OrdenCreateUpdateHeading" jhiTranslate="comerciowebApp.orden.home.createOrEditLabel">
+        Create or edit a Orden
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.fechaRegistro" for="field_fechaRegistro">Fecha Registro</label>
+          <div class="d-flex">
+            <input
+              id="field_fechaRegistro"
+              data-cy="fechaRegistro"
+              type="datetime-local"
+              class="form-control"
+              name="fechaRegistro"
+              formControlName="fechaRegistro"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('fechaRegistro')!.invalid && (editForm.get('fechaRegistro')!.dirty || editForm.get('fechaRegistro')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fechaRegistro')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fechaRegistro')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.fechaEntregaEstimada" for="field_fechaEntregaEstimada"
+            >Fecha Entrega Estimada</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_fechaEntregaEstimada"
+              data-cy="fechaEntregaEstimada"
+              type="datetime-local"
+              class="form-control"
+              name="fechaEntregaEstimada"
+              formControlName="fechaEntregaEstimada"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('fechaEntregaEstimada')!.invalid &&
+              (editForm.get('fechaEntregaEstimada')!.dirty || editForm.get('fechaEntregaEstimada')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fechaEntregaEstimada')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fechaEntregaEstimada')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.fechaEnntregaReal" for="field_fechaEnntregaReal"
+            >Fecha Enntrega Real</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_fechaEnntregaReal"
+              data-cy="fechaEnntregaReal"
+              type="datetime-local"
+              class="form-control"
+              name="fechaEnntregaReal"
+              formControlName="fechaEnntregaReal"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('fechaEnntregaReal')!.invalid &&
+              (editForm.get('fechaEnntregaReal')!.dirty || editForm.get('fechaEnntregaReal')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('fechaEnntregaReal')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('fechaEnntregaReal')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.descripcion" for="field_descripcion">Descripcion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="descripcion"
+            id="field_descripcion"
+            data-cy="descripcion"
+            formControlName="descripcion"
+          />
+          <div *ngIf="editForm.get('descripcion')!.invalid && (editForm.get('descripcion')!.dirty || editForm.get('descripcion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('descripcion')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.codigo" for="field_codigo">Codigo</label>
+          <input type="text" class="form-control" name="codigo" id="field_codigo" data-cy="codigo" formControlName="codigo" />
+          <div *ngIf="editForm.get('codigo')!.invalid && (editForm.get('codigo')!.dirty || editForm.get('codigo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('codigo')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.valorTotal" for="field_valorTotal">Valor Total</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valorTotal"
+            id="field_valorTotal"
+            data-cy="valorTotal"
+            formControlName="valorTotal"
+          />
+          <div *ngIf="editForm.get('valorTotal')!.invalid && (editForm.get('valorTotal')!.dirty || editForm.get('valorTotal')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('valorTotal')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('valorTotal')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.factura" for="field_factura">Factura</label>
+          <input type="text" class="form-control" name="factura" id="field_factura" data-cy="factura" formControlName="factura" />
+          <div *ngIf="editForm.get('factura')!.invalid && (editForm.get('factura')!.dirty || editForm.get('factura')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('factura')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.estado" for="field_estado">Estado</label>
+          <select class="form-control" name="estado" formControlName="estado" id="field_estado" data-cy="estado">
+            <option [ngValue]="null">{{ 'comerciowebApp.EstadoOrden.null' | translate }}</option>
+            <option *ngFor="let estadoOrden of estadoOrdenValues" [value]="estadoOrden">
+              {{ 'comerciowebApp.EstadoOrden.' + estadoOrden | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('estado')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.codCliente" for="field_codCliente">Cod Cliente</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codCliente"
+            id="field_codCliente"
+            data-cy="codCliente"
+            formControlName="codCliente"
+          />
+          <div *ngIf="editForm.get('codCliente')!.invalid && (editForm.get('codCliente')!.dirty || editForm.get('codCliente')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codCliente')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.datosCliente" for="field_datosCliente">Datos Cliente</label>
+          <input
+            type="text"
+            class="form-control"
+            name="datosCliente"
+            id="field_datosCliente"
+            data-cy="datosCliente"
+            formControlName="datosCliente"
+          />
+          <div
+            *ngIf="editForm.get('datosCliente')!.invalid && (editForm.get('datosCliente')!.dirty || editForm.get('datosCliente')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('datosCliente')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.mediPago" for="field_mediPago">Medi Pago</label>
+          <select class="form-control" id="field_mediPago" data-cy="mediPago" name="mediPago" formControlName="mediPago">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="medioPagoOption.id === editForm.get('mediPago')!.value?.id ? editForm.get('mediPago')!.value : medioPagoOption"
+              *ngFor="let medioPagoOption of mediPagosCollection; trackBy: trackMedioPagoById"
+            >
+              {{ medioPagoOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.orden.transportador" for="field_transportador">Transportador</label>
+          <select
+            class="form-control"
+            id="field_transportador"
+            data-cy="transportador"
+            name="transportador"
+            formControlName="transportador"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                transportadorOption.id === editForm.get('transportador')!.value?.id
+                  ? editForm.get('transportador')!.value
+                  : transportadorOption
+              "
+              *ngFor="let transportadorOption of transportadorsCollection; trackBy: trackTransportadorById"
+            >
+              {{ transportadorOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

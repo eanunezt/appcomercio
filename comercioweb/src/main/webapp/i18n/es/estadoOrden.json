@@ -1,0 +1,10 @@
+{
+  "comerciowebApp": {
+    "EstadoOrden": {
+      "null": "",
+      "ENTREGADO": "ENTREGADO",
+      "RECIBIDO": "RECIBIDO",
+      "DEVUELTO": "DEVUELTO"
+    }
+  }
+}

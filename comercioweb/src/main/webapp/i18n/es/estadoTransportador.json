@@ -1,0 +1,9 @@
+{
+  "comerciowebApp": {
+    "EstadoTransportador": {
+      "null": "",
+      "ACTIVO": "A",
+      "INACTIVO": "I"
+    }
+  }
+}

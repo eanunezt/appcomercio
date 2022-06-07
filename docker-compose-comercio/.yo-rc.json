@@ -1,0 +1,13 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["comercioapigateway", "ordenes", "productos", "clientes"],
+    "clusteredDbApps": [],
+    "deploymentType": "docker-compose",
+    "directoryPath": "../",
+    "dockerRepositoryName": "appcomercio",
+    "gatewayType": "SpringCloudGateway",
+    "jwtSecretKey": "Yzg1ZjFjNTdkZDBkYzRhNDkyYmRjMjlkMTMwOWRlMTRjYjNjNGRlOWRmMzJlYzQ1ZjhjOWM0NmQ2MmU4MTM0ZTMyMjFjODU4NWJjYmY4ZTZlY2NmZGQzMTRhNWI4ZDA5OTZiMw==",
+    "monitoring": "no",
+    "serviceDiscoveryType": "eureka"
+  }
+}

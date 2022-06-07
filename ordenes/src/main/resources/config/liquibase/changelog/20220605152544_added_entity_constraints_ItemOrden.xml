@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity ItemOrden.
+    -->
+    <changeSet id="20220605152544-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="orden_id"
+                                 baseTableName="item_orden"
+                                 constraintName="fk_item_orden__orden_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="orden"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,25 @@
+{
+  "comerciowebApp": {
+    "medioPago": {
+      "home": {
+        "title": "Medio Pagos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Medio Pago",
+        "createOrEditLabel": "Create or edit a Medio Pago",
+        "notFound": "No Medio Pagos found"
+      },
+      "created": "A new Medio Pago is created with identifier {{ param }}",
+      "updated": "A Medio Pago is updated with identifier {{ param }}",
+      "deleted": "A Medio Pago is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Medio Pago {{ id }}?"
+      },
+      "detail": {
+        "title": "Medio Pago"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "codigo": "Codigo"
+    }
+  }
+}

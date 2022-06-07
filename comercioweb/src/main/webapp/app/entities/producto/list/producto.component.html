@@ -1,0 +1,126 @@
+<div>
+  <h2 id="page-heading" data-cy="ProductoHeading">
+    <span jhiTranslate="comerciowebApp.producto.home.title">Productos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="comerciowebApp.producto.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-producto"
+        [routerLink]="['/producto/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="comerciowebApp.producto.home.createLabel"> Create a new Producto </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="productos?.length === 0">
+    <span jhiTranslate="comerciowebApp.producto.home.notFound">No productos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="productos && productos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="nombre">
+            <span jhiTranslate="comerciowebApp.producto.nombre">Nombre</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="codigo">
+            <span jhiTranslate="comerciowebApp.producto.codigo">Codigo</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="valor">
+            <span jhiTranslate="comerciowebApp.producto.valor">Valor</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="estado">
+            <span jhiTranslate="comerciowebApp.producto.estado">Estado</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tipoProducto.id">
+            <span jhiTranslate="comerciowebApp.producto.tipoProducto">Tipo Producto</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="proveedor.id">
+            <span jhiTranslate="comerciowebApp.producto.proveedor">Proveedor</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/producto', producto.id, 'view']">{{ producto.id }}</a>
+          </td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.codigo }}</td>
+          <td>{{ producto.valor }}</td>
+          <td jhiTranslate="{{ 'comerciowebApp.EstadoProducto.' + producto.estado }}">{{ producto.estado }}</td>
+          <td>
+            <div *ngIf="producto.tipoProducto">
+              <a [routerLink]="['/tipo-producto', producto.tipoProducto?.id, 'view']">{{ producto.tipoProducto?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="producto.proveedor">
+              <a [routerLink]="['/proveedor', producto.proveedor?.id, 'view']">{{ producto.proveedor?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/producto', producto.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/producto', producto.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(producto)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="productos && productos.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

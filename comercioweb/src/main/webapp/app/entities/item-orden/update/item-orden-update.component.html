@@ -1,0 +1,164 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-item-orden-heading" data-cy="ItemOrdenCreateUpdateHeading" jhiTranslate="comerciowebApp.itemOrden.home.createOrEditLabel">
+        Create or edit a Item Orden
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.itemOrden.item" for="field_item">Item</label>
+          <input type="number" class="form-control" name="item" id="field_item" data-cy="item" formControlName="item" />
+          <div *ngIf="editForm.get('item')!.invalid && (editForm.get('item')!.dirty || editForm.get('item')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('item')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('item')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.itemOrden.cantidad" for="field_cantidad">Cantidad</label>
+          <input type="number" class="form-control" name="cantidad" id="field_cantidad" data-cy="cantidad" formControlName="cantidad" />
+          <div *ngIf="editForm.get('cantidad')!.invalid && (editForm.get('cantidad')!.dirty || editForm.get('cantidad')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cantidad')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('cantidad')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.itemOrden.valorUnidad" for="field_valorUnidad">Valor Unidad</label>
+          <input
+            type="number"
+            class="form-control"
+            name="valorUnidad"
+            id="field_valorUnidad"
+            data-cy="valorUnidad"
+            formControlName="valorUnidad"
+          />
+          <div *ngIf="editForm.get('valorUnidad')!.invalid && (editForm.get('valorUnidad')!.dirty || editForm.get('valorUnidad')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('valorUnidad')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('valorUnidad')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.itemOrden.valor" for="field_valor">Valor</label>
+          <input type="number" class="form-control" name="valor" id="field_valor" data-cy="valor" formControlName="valor" />
+          <div *ngIf="editForm.get('valor')!.invalid && (editForm.get('valor')!.dirty || editForm.get('valor')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('valor')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('valor')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.itemOrden.codProducto" for="field_codProducto">Cod Producto</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codProducto"
+            id="field_codProducto"
+            data-cy="codProducto"
+            formControlName="codProducto"
+          />
+          <div *ngIf="editForm.get('codProducto')!.invalid && (editForm.get('codProducto')!.dirty || editForm.get('codProducto')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codProducto')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.itemOrden.nomProdcuto" for="field_nomProdcuto">Nom Prodcuto</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomProdcuto"
+            id="field_nomProdcuto"
+            data-cy="nomProdcuto"
+            formControlName="nomProdcuto"
+          />
+          <div *ngIf="editForm.get('nomProdcuto')!.invalid && (editForm.get('nomProdcuto')!.dirty || editForm.get('nomProdcuto')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomProdcuto')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="comerciowebApp.itemOrden.orden" for="field_orden">Orden</label>
+          <select class="form-control" id="field_orden" data-cy="orden" name="orden" formControlName="orden">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="ordenOption.id === editForm.get('orden')!.value?.id ? editForm.get('orden')!.value : ordenOption"
+              *ngFor="let ordenOption of ordensSharedCollection; trackBy: trackOrdenById"
+            >
+              {{ ordenOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

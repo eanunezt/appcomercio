@@ -1,0 +1,54 @@
+{
+  "applications": ["comercioweb", "productos"],
+  "changelogDate": "20220605153044",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "producto",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoProducto",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVO (A),INACTIVO (I)"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Producto",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "javadoc": "Tipo de producto",
+      "otherEntityName": "tipoProducto",
+      "otherEntityRelationshipName": "producto",
+      "ownerSide": true,
+      "relationshipName": "tipoProducto",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "javadoc": "proveedo productos",
+      "otherEntityName": "proveedor",
+      "otherEntityRelationshipName": "producto",
+      "ownerSide": true,
+      "relationshipName": "proveedor",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

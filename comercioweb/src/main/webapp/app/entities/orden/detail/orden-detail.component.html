@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="orden">
+      <h2 data-cy="ordenDetailsHeading"><span jhiTranslate="comerciowebApp.orden.detail.title">Orden</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ orden.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.fechaRegistro">Fecha Registro</span></dt>
+        <dd>
+          <span>{{ orden.fechaRegistro | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.fechaEntregaEstimada">Fecha Entrega Estimada</span></dt>
+        <dd>
+          <span>{{ orden.fechaEntregaEstimada | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.fechaEnntregaReal">Fecha Enntrega Real</span></dt>
+        <dd>
+          <span>{{ orden.fechaEnntregaReal | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.descripcion">Descripcion</span></dt>
+        <dd>
+          <span>{{ orden.descripcion }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.codigo">Codigo</span></dt>
+        <dd>
+          <span>{{ orden.codigo }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.valorTotal">Valor Total</span></dt>
+        <dd>
+          <span>{{ orden.valorTotal }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.factura">Factura</span></dt>
+        <dd>
+          <span>{{ orden.factura }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.estado">Estado</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'comerciowebApp.EstadoOrden.' + orden.estado }}">{{ orden.estado }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.codCliente">Cod Cliente</span></dt>
+        <dd>
+          <span>{{ orden.codCliente }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.datosCliente">Datos Cliente</span></dt>
+        <dd>
+          <span>{{ orden.datosCliente }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.mediPago">Medi Pago</span></dt>
+        <dd>
+          <div *ngIf="orden.mediPago">
+            <a [routerLink]="['/medio-pago', orden.mediPago?.id, 'view']">{{ orden.mediPago?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.orden.transportador">Transportador</span></dt>
+        <dd>
+          <div *ngIf="orden.transportador">
+            <a [routerLink]="['/transportador', orden.transportador?.id, 'view']">{{ orden.transportador?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/orden', orden.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

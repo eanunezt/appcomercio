@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cliente">
+      <h2 data-cy="clienteDetailsHeading"><span jhiTranslate="comerciowebApp.cliente.detail.title">Cliente</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cliente.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.cliente.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ cliente.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.cliente.tipoDcoumento">Tipo Dcoumento</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'comerciowebApp.TipoDocumento.' + cliente.tipoDcoumento }}">{{ cliente.tipoDcoumento }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.cliente.numDocumento">Num Documento</span></dt>
+        <dd>
+          <span>{{ cliente.numDocumento }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.cliente.email">Email</span></dt>
+        <dd>
+          <span>{{ cliente.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.cliente.numTelefono">Num Telefono</span></dt>
+        <dd>
+          <span>{{ cliente.numTelefono }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cliente', cliente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

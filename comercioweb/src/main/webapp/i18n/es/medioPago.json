@@ -1,0 +1,25 @@
+{
+  "comerciowebApp": {
+    "medioPago": {
+      "home": {
+        "title": "Medio Pagos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Medio Pago",
+        "createOrEditLabel": "Crear o editar Medio Pago",
+        "notFound": "Ningún Medio Pagos encontrado"
+      },
+      "created": "Un nuevo Medio Pago ha sido creado con el identificador {{ param }}",
+      "updated": "Un Medio Pago ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Medio Pago ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Medio Pago {{ id }}?"
+      },
+      "detail": {
+        "title": "Medio Pago"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "codigo": "Codigo"
+    }
+  }
+}

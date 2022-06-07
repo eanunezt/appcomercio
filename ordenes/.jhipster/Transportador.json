@@ -1,0 +1,35 @@
+{
+  "applications": ["comercioweb", "ordenes"],
+  "changelogDate": "20220605152844",
+  "clientRootFolder": "ordenes",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "transportador",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoTransportador",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVO (A),INACTIVO (I)"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "ordenes",
+  "name": "Transportador",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,211 @@
+application {
+  config {
+    baseName comercioweb
+    applicationType monolith
+    packageName com.comercio
+    serverPort 8080
+    languages [es,en]
+	skipServer true
+  }
+  entities *
+}
+
+application {
+  config {
+    baseName comercioapigateway
+    applicationType gateway
+    packageName com.comercio
+    serverPort 8080
+    authenticationType jwt
+    prodDatabaseType mysql
+    devDatabaseType mysql
+    buildTool maven
+    languages [es,en]
+    cacheProvider redis
+	enableHibernateCache false
+	serviceDiscoveryType eureka
+	skipClient true
+  }
+  //entities *
+}
+
+application {
+  config {
+    baseName ordenes
+    applicationType microservice
+    packageName com.comercio.pedidos
+    serverPort 8081
+    authenticationType jwt
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool maven
+    languages [es,en]
+    cacheProvider redis
+	enableHibernateCache false
+	serviceDiscoveryType eureka
+  }
+  entities Orden, ItemOrden, Transportador, MedioPago
+}
+
+application {
+  config {
+    baseName productos
+    applicationType microservice
+    packageName com.comercio.productos
+    serverPort 8082
+    authenticationType jwt
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool maven
+    languages [es,en]
+    cacheProvider redis
+	enableHibernateCache false
+	serviceDiscoveryType eureka
+  }
+  entities Producto, TipoProducto, Proveedor
+}
+
+application {
+  config {
+    baseName clientes
+    applicationType microservice
+    packageName com.comercio.clientes
+    serverPort 8083
+    authenticationType jwt
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool maven
+    languages [es,en]
+    cacheProvider redis
+	enableHibernateCache false
+	serviceDiscoveryType eureka
+  }
+  entities Cliente, Direccion
+}
+
+entity Proveedor
+{
+    nombre String required,
+    codigo String required
+}
+
+entity Producto
+{
+    nombre String required,
+    codigo String required,
+    valor Double required,
+    estado EstadoProducto required
+}
+
+entity TipoProducto
+{
+    nombre String required,
+    codigo String required
+}
+
+entity ItemOrden
+{
+    item Integer required,
+    cantidad Integer required,
+    valorUnidad Double required,
+    valor Double required,
+    codProducto String required,
+    nomProdcuto String required
+}
+
+entity MedioPago
+{
+    nombre String required,
+    codigo String required
+}
+
+entity Orden
+{
+    fechaRegistro Instant required,
+    fechaEntregaEstimada Instant required,
+    fechaEnntregaReal Instant required,
+    descripcion String required,
+    codigo String required,
+    valorTotal Double required,
+    factura String required,
+    estado EstadoOrden required,
+    codCliente String required,
+    datosCliente String required
+}
+
+entity Transportador
+{
+    nombre String required,
+    codigo String required,
+    estado EstadoTransportador required
+}
+
+entity Cliente
+{
+    nombre String required,
+    tipoDcoumento TipoDocumento required,
+    numDocumento String required,
+    email String required,
+    numTelefono String required
+}
+
+entity Direccion
+{
+    direccion String required,
+    ciudad String required,
+    barrio String required
+}
+
+
+enum EstadoProducto {
+ACTIVO(A),
+INACTIVO(I)
+}
+enum EstadoOrden {
+ENTREGADO,
+RECIBIDO,
+DEVUELTO
+}
+enum EstadoTransportador {
+ACTIVO(A),
+INACTIVO(I)
+}
+enum TipoDocumento {
+CC,
+NIT,
+CE,
+PASAPORTE
+}
+
+
+relationship OneToOne  {
+	/**Tipo de producto**/
+	Producto{tipoProducto} to TipoProducto
+    /** proveedo productos**/
+    Producto{proveedor} to  Proveedor
+	
+	/*items de ordenr*/
+    Orden{mediPago} to MedioPago
+	/* Producto Orden*/
+    Orden{transportador} to  Transportador
+    
+    }
+	
+relationship OneToMany{
+	
+	/*items de ordenr*/
+    Orden{items} to ItemOrden
+	/*direcciones de los clientes*/
+	Cliente{direcciones} to Direccion
+}
+
+// Set pagination options
+paginate  Producto, Proveedor, TipoProducto, Orden, ItemOrden,Transportador  with pagination
+service * with serviceImpl
+dto * with mapstruct
+
+deployment {
+  deploymentType docker-compose
+  appsFolders [comercioapi, ordenes, productos, clientes]
+  dockerRepositoryName "comercioapigateway"
+}

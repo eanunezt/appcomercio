@@ -1,0 +1,26 @@
+{
+  "applications": ["comercioweb", "productos"],
+  "changelogDate": "20220605153244",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tipo_producto",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TipoProducto",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

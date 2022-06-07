@@ -1,0 +1,26 @@
+{
+  "comerciowebApp": {
+    "transportador": {
+      "home": {
+        "title": "Transportadors",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Transportador",
+        "createOrEditLabel": "Crear o editar Transportador",
+        "notFound": "Ningún Transportadors encontrado"
+      },
+      "created": "Un nuevo Transportador ha sido creado con el identificador {{ param }}",
+      "updated": "Un Transportador ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Transportador ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Transportador {{ id }}?"
+      },
+      "detail": {
+        "title": "Transportador"
+      },
+      "id": "ID",
+      "nombre": "Nombre",
+      "codigo": "Codigo",
+      "estado": "Estado"
+    }
+  }
+}

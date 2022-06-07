@@ -1,0 +1,9 @@
+{
+  "comerciowebApp": {
+    "EstadoProducto": {
+      "null": "",
+      "ACTIVO": "A",
+      "INACTIVO": "I"
+    }
+  }
+}

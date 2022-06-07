@@ -1,0 +1,30 @@
+{
+  "comerciowebApp": {
+    "itemOrden": {
+      "home": {
+        "title": "Item Ordens",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Item Orden",
+        "createOrEditLabel": "Crear o editar Item Orden",
+        "notFound": "Ningún Item Ordens encontrado"
+      },
+      "created": "Un nuevo Item Orden ha sido creado con el identificador {{ param }}",
+      "updated": "Un Item Orden ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Item Orden ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Item Orden {{ id }}?"
+      },
+      "detail": {
+        "title": "Item Orden"
+      },
+      "id": "ID",
+      "item": "Item",
+      "cantidad": "Cantidad",
+      "valorUnidad": "Valor Unidad",
+      "valor": "Valor",
+      "codProducto": "Cod Producto",
+      "nomProdcuto": "Nom Prodcuto",
+      "orden": "Orden"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="direccion">
+      <h2 data-cy="direccionDetailsHeading"><span jhiTranslate="comerciowebApp.direccion.detail.title">Direccion</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ direccion.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.direccion.direccion">Direccion</span></dt>
+        <dd>
+          <span>{{ direccion.direccion }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.direccion.ciudad">Ciudad</span></dt>
+        <dd>
+          <span>{{ direccion.ciudad }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.direccion.barrio">Barrio</span></dt>
+        <dd>
+          <span>{{ direccion.barrio }}</span>
+        </dd>
+        <dt><span jhiTranslate="comerciowebApp.direccion.cliente">Cliente</span></dt>
+        <dd>
+          <div *ngIf="direccion.cliente">
+            <a [routerLink]="['/cliente', direccion.cliente?.id, 'view']">{{ direccion.cliente?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/direccion', direccion.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

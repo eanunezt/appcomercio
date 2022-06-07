@@ -1,0 +1,88 @@
+{
+  "applications": ["comercioweb", "ordenes"],
+  "changelogDate": "20220605152944",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "orden",
+  "fields": [
+    {
+      "fieldName": "fechaRegistro",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaEntregaEstimada",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaEnntregaReal",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codigo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valorTotal",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "factura",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoOrden",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ENTREGADO,RECIBIDO,DEVUELTO"
+    },
+    {
+      "fieldName": "codCliente",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "datosCliente",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Orden",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "medioPago",
+      "otherEntityRelationshipName": "orden",
+      "ownerSide": true,
+      "relationshipName": "mediPago",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "transportador",
+      "otherEntityRelationshipName": "orden",
+      "ownerSide": true,
+      "relationshipName": "transportador",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "itemOrden",
+      "otherEntityRelationshipName": "orden",
+      "relationshipName": "items",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

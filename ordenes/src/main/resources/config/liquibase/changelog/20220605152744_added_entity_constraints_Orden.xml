@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Orden.
+    -->
+    <changeSet id="20220605152744-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="medi_pago_id"
+                                 baseTableName="orden"
+                                 constraintName="fk_orden__medi_pago_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="medio_pago"/>
+
+        <addForeignKeyConstraint baseColumnNames="transportador_id"
+                                 baseTableName="orden"
+                                 constraintName="fk_orden__transportador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transportador"/>
+    </changeSet>
+</databaseChangeLog>
